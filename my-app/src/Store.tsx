@@ -1,7 +1,11 @@
 import { init } from '@rematch/core'
-import * as models from './Models';
+import count from './Models/count'
+import info from './Models/info'
 
 const store = init({
-  models
+  models: {
+    count,
+    info
+  }
 })
-export default store;
+export default store
