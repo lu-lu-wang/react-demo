@@ -24,6 +24,7 @@ class Index extends React.Component<Props> {
       <div className="content">
         <p>{count.num}</p>
         <button onClick={this.goMy}>+</button>
+        <button onClick={this.goLodash}>Lodash</button>
       </div>
     )
   }
@@ -38,7 +39,9 @@ class Index extends React.Component<Props> {
     if (num === 10) {
       history.push('./my')
     }
-    // history.push('./my')
+  }
+  goLodash = () => {
+    history.push('./lodash')
   }
 }
 export default connect(
