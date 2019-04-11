@@ -5,7 +5,7 @@ import Index from './pages/Index'
 import My from './pages/My';
 import Array from './pages/Lodash/Array';
 import Lodash from './pages/Lodash/Index';
-
+import GridLayout from './pages/GridLayout/Index';
 const my = () => {
   return (
     <Switch>
@@ -22,8 +22,15 @@ const lodash = () => {
     </div>
   )
 }
+const layout = () => {
+  return (
+    <div>
+      <Route exact={true} path="/gridLayout" component={GridLayout}/>
+    </div>
+  )
+}
 const routers = () => {
-  return <Router history={history}><div>{my()}{lodash()}</div></Router>
+  return <Router history={history}><div>{my()}{lodash()}{layout()}</div></Router>
 }
 
 export default routers

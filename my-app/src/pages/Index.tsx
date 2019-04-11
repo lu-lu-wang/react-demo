@@ -25,6 +25,7 @@ class Index extends React.Component<Props> {
         <p>{count.num}</p>
         <button onClick={this.goMy}>+</button>
         <button onClick={this.goLodash}>Lodash</button>
+        <button onClick={this.goGrid}>Grid布局</button>
       </div>
     )
   }
@@ -42,6 +43,9 @@ class Index extends React.Component<Props> {
   }
   goLodash = () => {
     history.push('./lodash')
+  }
+  goGrid = () =>{
+    history.push('./gridLayout')
   }
 }
 export default connect(

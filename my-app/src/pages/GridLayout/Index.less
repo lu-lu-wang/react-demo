@@ -1,0 +1,37 @@
+.wrapper {
+  margin: 200px 500px;
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .item1 {
+    background: aliceblue;
+    // grid-column-start: 1;
+    // grid-column-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  .item2 {
+    background: antiquewhite;
+  }
+  .item3 {
+    background: beige;
+    grid-row-start: 2;
+    grid-row-end: 4;
+  }
+  .item4 {
+    background: bisque;
+    grid-column-start: 2;
+    grid-column-end: 4;
+  }
+  .item5 {
+    background: gainsboro;
+  }
+  .item6 {
+    background: lavender;
+  }
+}
