@@ -6,6 +6,7 @@ import My from './pages/My';
 import Array from './pages/Lodash/Array';
 import Lodash from './pages/Lodash/Index';
 import GridLayout from './pages/GridLayout/Index';
+import Loft from './pages/Loft/Index';
 const my = () => {
   return (
     <Switch>
@@ -26,6 +27,7 @@ const layout = () => {
   return (
     <div>
       <Route exact={true} path="/gridLayout" component={GridLayout}/>
+      <Route exact={true} path="/loft" component={Loft}/>
     </div>
   )
 }

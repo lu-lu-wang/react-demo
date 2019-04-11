@@ -26,6 +26,7 @@ class Index extends React.Component<Props> {
         <button onClick={this.goMy}>+</button>
         <button onClick={this.goLodash}>Lodash</button>
         <button onClick={this.goGrid}>Grid布局</button>
+        <button onClick={this.goLoft}>楼层</button>
       </div>
     )
   }
@@ -46,6 +47,9 @@ class Index extends React.Component<Props> {
   }
   goGrid = () =>{
     history.push('./gridLayout')
+  }
+  goLoft = () => {
+    history.push('./loft')
   }
 }
 export default connect(
