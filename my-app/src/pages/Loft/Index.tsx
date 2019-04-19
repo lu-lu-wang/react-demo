@@ -1,6 +1,6 @@
 import React from 'react';
 import './Index.less';
-import { Anchor }  from 'antd';
+import { Anchor }  from 'antd'
 const { Link } = Anchor;
 
 export default class Loft extends React.Component {
