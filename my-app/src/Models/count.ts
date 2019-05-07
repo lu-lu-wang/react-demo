@@ -13,6 +13,7 @@ const count = {
   },
   effects: (dispatch: any) => ({
     async incrementAsync(payload: any, rootState: any) {
+      // 模拟请求接口
       await new Promise(resolve => setTimeout(resolve, 100))
       dispatch.count.increment(payload)
     }

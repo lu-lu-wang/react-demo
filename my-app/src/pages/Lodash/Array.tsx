@@ -7,6 +7,7 @@ export default class Lodash extends React.Component{
   render (){
     return (
       <div className="contentLodash">
+        {this.renderSplitArray(5,[1,2,3,4,5,3,2,1,1,1,1,3,4,5,5,3,25,6])}
         <div>
         <div>Array方法</div>
           <div><p>1) _.chunk(array,[size=1])<br/>
@@ -236,5 +237,13 @@ export default class Lodash extends React.Component{
   }
   renderPullAt = () =>{
     return _.pullAt([1,2,3,4,5],1,3).join(' ')
+  }
+  renderSplitArray = (num: any, array: any) => {
+    var result = [];
+    for(var i=0; i<array.length;i+=num){
+        result.push(array.slice(i,i+num));
+    }
+    console.log('result', _.join(result, '、'))
+    return _.join(result, '、')
   }
 }
