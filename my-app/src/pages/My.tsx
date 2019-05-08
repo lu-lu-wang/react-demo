@@ -7,7 +7,7 @@ const mapState = (state: any) => ({
   info: state.info
 })
 const mapDispatch = (disaptch: any) => ({
-  infoDispatch: disaptch.info
+  infoDispatch: (opt: any) => disaptch.info.getUserInfo(opt)
 })
 
 type connectedProps = ReturnType<typeof mapState> &
@@ -26,7 +26,7 @@ class My extends React.Component<Props> {
   }
   changeName = () => {
     const { infoDispatch } = this.props
-    infoDispatch.getUserInfo({ name: 'zhanghao' })
+    infoDispatch&&infoDispatch({ name: 'zhanghao' })
     this.back()
   }
   back = async () => {

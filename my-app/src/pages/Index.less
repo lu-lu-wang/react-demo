@@ -1,4 +1,4 @@
-.content {
+.IndexContent {
   margin: 50px auto;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -7,10 +7,10 @@
   text-align: center;
   font-size: 24px;
   background: aliceblue;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // flex-direction: column;
   button {
     cursor: pointer;
     width: 102px;
@@ -22,10 +22,24 @@
     font-size: 16px;
     outline: none;
     margin-bottom: 8px;
+    margin-right: 8px;
+    &:last-child {
+      margin-right: 0;
+    }
   }
   a {
     color: #ecbd7f;
     text-decoration: none;
     margin: 4px;
+  }
+  p {
+    margin-top: 0;
+  }
+  .time {
+    text-align: right;
+    margin: 0;
+    font-size: 14px;
+    color: #7d7d7d;
+    cursor: pointer;
   }
 }
