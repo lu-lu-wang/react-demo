@@ -6,7 +6,7 @@ const mapStateToProps = (state: any) => ({
   count: state.count
 })
 const mapDispatchToProps = (dispatch: any) => ({
-  countDispatch: dispatch.count
+  countDispatch: (num: any)=> dispatch.count.incrementAsync(num)
 })
 type connectedProps = ReturnType<typeof mapStateToProps> &
   ReturnType<typeof mapDispatchToProps>
@@ -15,7 +15,7 @@ type Props = Partial<connectedProps>
 class Index extends React.Component<Props> {
   componentDidMount() {
     const { countDispatch } = this.props;
-    countDispatch.incrementAsync({ num: 1 })
+    countDispatch && countDispatch({ num: 1 })
   }
   render() {
     const { count } = this.props
@@ -37,7 +37,7 @@ class Index extends React.Component<Props> {
     } = this.props
     console.log('this.props', this.props)
     let newNum = num + 1
-    countDispatch.incrementAsync({ num: newNum })
+    countDispatch && countDispatch({ num: newNum })
     if (num === 10) {
       history.push('./my')
     }

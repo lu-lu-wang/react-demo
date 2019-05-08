@@ -408,13 +408,13 @@ init({
 ## React
 
 ```
-import React from 'react'
+import React from 'react' 
 import { connect } from 'react-redux'
 
 const mapState = (state) => ({
   count: state.count
 })
-const mapDispatch = (props) => ({
+const mapDispatch = (dispatch) => ({
   // 将dispatch语句保留在mapDispatch中，保持组件纯粹，易于测试
   increment: () => dispatch.count.increment()
 })
