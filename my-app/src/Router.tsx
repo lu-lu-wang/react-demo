@@ -8,6 +8,7 @@ import Lodash from './pages/Lodash/Index';
 import GridLayout from './pages/GridLayout/Index';
 import Loft from './pages/Loft/Index';
 import Moment from './pages/Moment/Index'
+import Product from './pages/Product/Index'
 const my = () => {
   return ( 
     <Switch>
@@ -37,6 +38,11 @@ const moment = () => {
     <Route exact={true} path="/moment" component={Moment}/>
   )
 }
+const product = () => {
+  return (
+    <Route exact={true} path="/product" component={Product}/>
+  )
+}
 const routers = () => {
   return (
     <Router history={history}>
@@ -45,6 +51,7 @@ const routers = () => {
         {lodash()}
         {layout()}
         {moment()}
+        {product()}
       </div>
     </Router>
   )

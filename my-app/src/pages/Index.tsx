@@ -43,6 +43,7 @@ class Index extends React.Component<Props, IndexProps> {
         <button onClick={this.goLodash}>Lodash</button>
         <button onClick={this.goGrid}>Grid布局</button>
         <button onClick={this.goLoft}>楼层</button>
+        <button onClick={this.goProduct}>商品</button>
       </div>
     )
   }
@@ -65,6 +66,9 @@ class Index extends React.Component<Props, IndexProps> {
   }
   goMoment = () => {
     history.push('./moment')
+  }
+  goProduct = () => {
+    history.push('./product')
   }
 }
 export default connect(
