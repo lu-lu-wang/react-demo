@@ -11,3 +11,5 @@ export function getProduct(params?: any){
   }
   return request('http://test.webapi.sunmi.com/webapi/misun/web/partners/1.0/?service=Goods.getPartInfo', opts)
 }
+// http://test.webapi.sunmi.com/webapi/misun/web/manage/1.0/?service=Finance.confirmOrderDetail
+// {"adminId":"d42398ec9b28c6157b27c50a7503ce4e","confirm_id":"68"}

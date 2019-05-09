@@ -40,7 +40,6 @@ export default function resolveParams(params: any) {
     formData.params = paramsEncode(params);
   }
   formData.sign = signEncode(formData);
-  console.log('formData.sign', formData.sign)
   formData.lang = 'zh';
   return formData;
 }

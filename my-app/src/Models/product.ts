@@ -1,9 +1,15 @@
 import { getProduct } from '../services/product'
 const product = {
-  state: {},
+  state: {
+    categoryLists: [],
+    categoryPartList: []
+  },
   reducers: {
     setProduct: (state: any, payload: any) => {
-      return state + payload
+      return {
+        ...state,
+        payload
+      }
     }
   },
   effects: (dispatch: any) =>({
