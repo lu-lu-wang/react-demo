@@ -8,16 +8,16 @@ const product = {
     setProduct: (state: any, payload: any) => {
       return {
         ...state,
-        payload
+        ...payload
       }
     }
   },
   effects: (dispatch: any) =>({
     asyncGetProduct: async ()=>{
       try {
-        const json = await getProduct();
+        const { data } = await getProduct();
         // console.log('json', json)
-        dispatch.product.setProduct(json)
+        dispatch.product.setProduct(data)
       } catch (error) {
         console.log('error', error)
       }

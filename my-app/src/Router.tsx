@@ -9,6 +9,7 @@ import GridLayout from './pages/GridLayout/Index';
 import Loft from './pages/Loft/Index';
 import Moment from './pages/Moment/Index'
 import Product from './pages/Product/Index'
+import Hooks from './pages/Hooks/Index'
 const my = () => {
   return ( 
     <Switch>
@@ -43,6 +44,9 @@ const product = () => {
     <Route exact={true} path="/product" component={Product}/>
   )
 }
+const hooks = () => {
+  return <Route exact={true} path='/goHooks' component={Hooks}/>
+}
 const routers = () => {
   return (
     <Router history={history}>
@@ -52,6 +56,7 @@ const routers = () => {
         {layout()}
         {moment()}
         {product()}
+        {hooks()}
       </div>
     </Router>
   )

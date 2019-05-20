@@ -21,15 +21,23 @@ class Product extends React.Component<Props>{
     getProduct && getProduct()
   }
   render(){
-    const { product } = this.props;
-    console.log(product)
+    const { product: { categoryLists } } = this.props;
+    console.log(categoryLists)
+    interface categoryItem {
+      category_id: '',
+      category_name: ''
+    }
     return (
       <div className="content">
         商品介绍页
         <Tabs defaultActiveKey="1" onChange={this.callback}>
-          <TabPane tab="Tab 1" key="1">Content of Tab Pane 1</TabPane>
-          <TabPane tab="Tab 2" key="2">Content of Tab Pane 2</TabPane>
-          <TabPane tab="Tab 3" key="3">Content of Tab Pane 3</TabPane >
+          {
+            categoryLists.map((item: categoryItem)=>{
+              return (
+                <TabPane tab={item.category_name} key={item.category_id}>{item.category_name}</TabPane>
+              )
+            })
+          }
         </Tabs>
       </div>
     )

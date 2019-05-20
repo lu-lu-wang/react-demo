@@ -21,6 +21,7 @@ class My extends React.Component<Props> {
       <div className="content">
         <p>{info.name}</p>
         <button onClick={this.changeName}>改名啦</button>
+        <button onClick={this.goHooks}>探索hooks</button>
       </div>
     )
   }
@@ -32,6 +33,9 @@ class My extends React.Component<Props> {
   back = async () => {
     await new Promise(resolve => setTimeout(resolve, 1000))
     history.push('/')
+  }
+  goHooks = () => {
+    history.replace('/goHooks')
   }
 }
 export default connect(
