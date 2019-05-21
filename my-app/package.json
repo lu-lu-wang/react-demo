@@ -17,6 +17,7 @@
     "@types/react-sticky": "^6.0.3",
     "@types/react-virtualized-select": "^3.0.7",
     "antd": "^3.16.2",
+    "antd-mobile": "^2.2.13",
     "axios": "^0.18.0",
     "babel": "^6.23.0",
     "babel-core": "7.0.0-bridge.0",
