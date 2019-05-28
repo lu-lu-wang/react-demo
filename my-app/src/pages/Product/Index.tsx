@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Tabs, List } from 'antd-mobile'
 import { StickyContainer, Sticky } from 'react-sticky';
-import TouchMove from '../../components/TouchMove'
+// import TouchMove from '../../components/TouchMove'
 const Item = List.Item
 import './index.less'
 const mapState = (state: any) => ({
@@ -15,7 +15,8 @@ const mapDispatch = (disptach: any)=>({
   deleteAddress: (id?: any) => disptach.address.deleteAddress(id)
 })
 interface State {
-  startX: number
+  startX: number,
+  isDelete: boolean
 }
 type connectedProps = ReturnType<typeof mapState> &
   ReturnType<typeof mapDispatch>;
@@ -24,7 +25,8 @@ type Props = Partial<connectedProps>;
 
 class Product extends React.Component<Props, State>{
   state: Readonly<State> = {
-    startX: 0
+    startX: 0,
+    isDelete: false
   }
   componentDidMount(){
     const { getProduct, getAddressList } = this.props;
@@ -83,28 +85,28 @@ class Product extends React.Component<Props, State>{
   renderList = () => {
     const { address: { addressLists: { result } } } = this.props;
     if(result.length === 0){
-      return null;
+      return <div className="noAddress">暂无地址信息</div>;
     }
     return (
       <div id="collect">
         <div className="collectList">
         {result && result.map((item: any, index: any)=>{
           return (
-            <div>
-              <TouchMove
-                key={index}  
-                clickRemove={()=>this.clickRemove(index, item.addrId)}
-                isClose={item.isClose}
-                toOpen={()=>this.toOpen(index)}
-                toClose={()=>this.toClose(index)}
-              >
-                <div key={item.id} className="collectItem onePx_bottom">
-                  <div className="collectMsg">
-                    <div>{item.consignee_mobile}</div>
+            <List>
+              <Item>
+                <div 
+                  key={item.id} 
+                  className="collectItem"
+                  onTouchStart = {this.handelTouchStart}
+                  onTouchMove = {(e)=>this.handelTouchMove(e,index)}
+                >
+                  <div className={item.isClose ? 'test' : 'test left'}>
+                    {item.consignee_mobile}
                   </div>
+                  <div className="close" onClick={()=>this.clickRemove(index,item.addrId)}>删除</div>
                 </div>
-              </TouchMove>
-            </div>
+              </Item>
+            </List>
           )
         })
         }
@@ -112,23 +114,45 @@ class Product extends React.Component<Props, State>{
       </div>
     )
   }
-  toClose = (index: any) => {
+  handelTouchStart = (e: any) => {
+    const Touch = e.touches[0]
+    this.setState({
+      startX: Touch.pageX
+    })
+  }
+  handelTouchMove = (e: any, index: any) => {
+    const _Touch = e.touches[0]
     const { address: { addressLists: { result } } } = this.props;
-    const collect = new Array(...result)
-    collect.forEach((item) => {
+    const copyResult = new Array(...result)
+    copyResult.forEach((item) => {
       item.isClose = true
     })
+    if(this.state.startX>_Touch.pageX+10 && result[index].isClose){
+      copyResult[index].isClose = false
+    }
+    if(this.state.startX < _Touch.pageX + 20 && !result[index].isClose){
+      copyResult[index].isClose = true
+    }
     this.forceUpdate();
   }
-  toOpen = (item: any)=> {
-    const { address: { addressLists: { result } } } = this.props;
-    const collect = new Array(...result)
-    collect.forEach((item) => {
-      item.isClose = true
-    })
-    collect[item].isClose = false
-    this.forceUpdate();
-  }
+  
+  // toClose = (index: any) => {
+  //   const { address: { addressLists: { result } } } = this.props;
+  //   const collect = new Array(...result)
+  //   collect.forEach((item) => {
+  //     item.isClose = true
+  //   })
+  //   this.forceUpdate();
+  // }
+  // toOpen = (item: any)=> {
+  //   const { address: { addressLists: { result } } } = this.props;
+  //   const collect = new Array(...result)
+  //   collect.forEach((item) => {
+  //     item.isClose = true
+  //   })
+  //   collect[item].isClose = false
+  //   this.forceUpdate();
+  // }
   clickRemove =  async (index: any, item: any) => {
     const { address: { addressLists: { result } }, deleteAddress } = this.props;
     const collect = new Array(...result)
