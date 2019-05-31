@@ -3,8 +3,12 @@ import { connect } from 'react-redux'
 import { Tabs, List } from 'antd-mobile'
 import { StickyContainer, Sticky } from 'react-sticky';
 // import TouchMove from '../../components/TouchMove'
+import { ImageLazy } from '../../components/ImageLazy'
 const Item = List.Item
 import './index.less'
+import { Row, Col } from 'antd';
+import _ from 'lodash';
+
 const mapState = (state: any) => ({
   product: state.product,
   address: state.address
@@ -34,7 +38,7 @@ class Product extends React.Component<Props, State>{
     getAddressList && getAddressList()
   }
   render(){
-    const { product: { categoryLists } } = this.props;
+    const { product: { categoryPartList } } = this.props;
     interface categoryItem {
       category_id: '',
       category_name: ''
@@ -63,6 +67,7 @@ class Product extends React.Component<Props, State>{
         </StickyContainer>
         {this.renderReactDom()}
         {this.renderList()}
+        {this.renderGoodsCard()}
       </div>
     )
   }
@@ -158,6 +163,31 @@ class Product extends React.Component<Props, State>{
     const collect = new Array(...result)
     collect.splice(index,1)
     deleteAddress && deleteAddress(item)
+  }
+  renderGoodsCard = () => {
+    const { product: { categoryPartList } } = this.props;
+    const list = categoryPartList && _.chunk(categoryPartList, 10)[0]
+    return (
+      <div className="goodsCard">
+      {list && list.map((item: any)=>{
+        return (
+            <div className="goodsCardItem">
+              <div className="goodsCard__flex">
+                <div>
+                  <ImageLazy 
+                    realUrl={item.goods_icon} 
+                    offSetTop={0}
+                    initUrl='https://ss0.bdstatic.com/-0U0bnSm1A5BphGlnYG/tam-ogel/8bc5c8ca3da4043fc6c9dbfb32d5dc89_121_121.jpg'
+                  />
+                </div>
+                <div>{item.goods_title}</div>
+                <div className="goodsCard__price">￥{item.actual_price}</div>
+              </div> 
+            </div>
+        )
+      })}
+      </div>
+    )
   }
 }
 const Test = (props: any) => {

@@ -2,7 +2,7 @@ import request from "../lib/request";
 
 // 商品信息
 export function getProduct(params?: any){
-  const param = { "dId": "61307a4237d3545c963ee88ee32e96be","pageIndex": 1,"pageCount": 12,"category_id": "","origin": "1","channel": "1" }
+  const param = { "dId": "c42aaf8355de04abc1fd768f6d735349","pageIndex": 1,"pageCount": 12,"category_id": "","origin": "1","channel": "1" }
   const opts = {
     method: 'POST',
     body: {
@@ -16,7 +16,7 @@ export function getProduct(params?: any){
 
 // 地址管理
 export function addressList(){
-  const params = {"dId":"61307a4237d3545c963ee88ee32e96be","origin":"3","channel":"1","pageIndex":1,"pageCount":10}
+  const params = {"dId":"c42aaf8355de04abc1fd768f6d735349","origin":"3","channel":"1","pageIndex":1,"pageCount":10}
   const opts = {
     method: 'POST',
     body: {
@@ -27,7 +27,7 @@ export function addressList(){
 }
 // 删除地址
 export function deleteAddress(id?: string){
-  const params = {"dId":"61307a4237d3545c963ee88ee32e96be","addrId":"1517","origin":"1","channel":"1"}
+  const params = {"dId":"c42aaf8355de04abc1fd768f6d735349","addrId":"1517","origin":"1","channel":"1"}
   const opts = {
     method: 'POST',
     body: {
