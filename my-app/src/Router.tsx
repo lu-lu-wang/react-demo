@@ -10,6 +10,7 @@ import Loft from './pages/Loft/Index';
 import Moment from './pages/Moment/Index'
 import Product from './pages/Product/Index'
 import Hooks from './pages/Hooks/Index'
+import  Antd from './pages/Antd/Index'
 const my = () => {
   return ( 
     <Switch>
@@ -23,6 +24,7 @@ const lodash = () => {
   return (
     <div>
       <Route exact={true} path="/array" component={Array} />
+      <Route exact={true} path="/antd" component={Antd}/>
     </div>
   )
 }

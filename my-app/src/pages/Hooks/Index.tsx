@@ -28,32 +28,44 @@ import axios from 'axios'
 //   )
 // }
 export interface State {
-  show: boolean
+  show: boolean,
+  loading: boolean
 }
 class Index extends React.Component{
   constructor(props: any){
     super(props);
   }
   state: Readonly<State> = {
-    show: true
+    show: true,
+    loading: false
   }
   render () {
     return (
       <div>
         <Button type="primary" onClick={()=> this.onOk()}>click me!</Button>
         <Modal
-        visible={this.state.show}
-        onCancel={()=> this.cancel()}
-        onOk={()=>this.cancel()}
-        destroyOnClose={true}
-      >
-        <Input placeholder="请输入"/>
-      </Modal>
+          visible={this.state.show}
+          onCancel={()=> this.cancel()}
+          onOk={()=>this.cancel()}
+          destroyOnClose={true}
+          width={520}
+          confirmLoading={this.state.loading}
+        >
+          <Input placeholder="请输入"/>
+        </Modal>
       </div>
     )
   }
   cancel = () =>{
-    this.setState({show: false})
+    this.setState({
+      confirmLoading: true,
+    });
+    setTimeout(() => {
+      this.setState({
+        show: false,
+        confirmLoading: false,
+      });
+    }, 2000);
   }
   onOk = () => {
     this.setState({show: true})
