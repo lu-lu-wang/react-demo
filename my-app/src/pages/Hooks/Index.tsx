@@ -1,74 +1,46 @@
-import React, { useEffect, useState } from 'react'
-import { Modal, Input, Button } from 'antd'
-import axios from 'axios'
+import React from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 
-// function Index(){
-//   const [product, getProduct]= useState()
-//   function getItem () {
-//     axios({
-//       method: 'POST',
-//       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-//       url: 'http://test.webapi.sunmi.com/webapi/misun/web/manage/1.0/?service=Finance.confirmOrderDetail',
-//       data: {"adminId":"d42398ec9b28c6157b27c50a7503ce4e","confirm_id":"68"}
-//     })
-//     .then(res=>{
-//       getProduct(res.data)
-//     })
-//     .catch((err: any)=>console.log(err))
-//   }
-//   useEffect(()=>{
-//     getItem()
-//     // document.title = `${count}`
-//   },[])
-//   return (
-//     <div className="content">
-//       {product}
-//       {/* <button onClick={()=>setCount(count+1)}>click me</button> */}
-//     </div>
-//   )
-// }
-export interface State {
-  show: boolean,
-  loading: boolean
-}
-class Index extends React.Component{
-  constructor(props: any){
-    super(props);
-  }
-  state: Readonly<State> = {
-    show: true,
-    loading: false
-  }
-  render () {
-    return (
-      <div>
-        <Button type="primary" onClick={()=> this.onOk()}>click me!</Button>
-        <Modal
-          visible={this.state.show}
-          onCancel={()=> this.cancel()}
-          onOk={()=>this.cancel()}
-          destroyOnClose={true}
-          width={520}
-          confirmLoading={this.state.loading}
-        >
-          <Input placeholder="请输入"/>
-        </Modal>
-      </div>
-    )
-  }
-  cancel = () =>{
-    this.setState({
-      confirmLoading: true,
-    });
+const style = {
+  height: 30,
+  border: "1px solid green",
+  margin: 6,
+  padding: 8
+};
+
+export default class App extends React.Component {
+  state = {
+    items: Array.from({ length: 20 })
+  };
+
+  fetchMoreData = () => {
+    // a fake async api call like which sends
+    // 20 more records in 1.5 secs
     setTimeout(() => {
       this.setState({
-        show: false,
-        confirmLoading: false,
+        items: this.state.items.concat(Array.from({ length: 20 }))
       });
-    }, 2000);
-  }
-  onOk = () => {
-    this.setState({show: true})
+    }, 1500);
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>demo: react-infinite-scroll-component</h1>
+        <hr />
+        <InfiniteScroll
+          dataLength={this.state.items.length}
+          next={this.fetchMoreData}
+          hasMore={true}
+          loader={<h4>Loading...</h4>}
+        >
+          {this.state.items.map((i, index) => (
+            <div style={style} key={index}>
+              div - #{index}
+            </div>
+          ))}
+        </InfiniteScroll>
+      </div>
+    );
   }
 }
-export default Index;

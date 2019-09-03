@@ -50,6 +50,7 @@ class Index extends React.Component<Props, IndexProps> {
         <button onClick={this.goGrid}>Grid布局</button>
         <button onClick={this.goLoft}>楼层</button>
         <button onClick={this.goProduct}>商品</button>
+        <button onClick={this.goG2}>AntV-G2</button>
       </div>
     )
   }
@@ -75,6 +76,9 @@ class Index extends React.Component<Props, IndexProps> {
   }
   goProduct = () => {
     history.push('./product')
+  }
+  goG2 = () => {
+    history.push('./goG2')
   }
   getCountDown = (timestamp: any) => {
     let countDownTime

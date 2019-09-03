@@ -34,8 +34,8 @@ class Product extends React.Component<Props, State>{
   }
   componentDidMount(){
     const { getProduct, getAddressList } = this.props;
-    getProduct && getProduct()
-    getAddressList && getAddressList()
+    // getProduct && getProduct()
+    // getAddressList && getAddressList()
   }
   render(){
     const { product: { categoryPartList } } = this.props;

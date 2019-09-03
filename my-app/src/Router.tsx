@@ -11,6 +11,7 @@ import Moment from './pages/Moment/Index'
 import Product from './pages/Product/Index'
 import Hooks from './pages/Hooks/Index'
 import  Antd from './pages/Antd/Index'
+import G2Demo from './pages/Product/G2Demo'
 const my = () => {
   return ( 
     <Switch>
@@ -43,7 +44,11 @@ const moment = () => {
 }
 const product = () => {
   return (
-    <Route exact={true} path="/product" component={Product}/>
+    <div>
+      <Route exact={true} path="/goG2" component={G2Demo}/>
+      <Route exact={true} path="/product" component={Product}/>
+    </div>
+
   )
 }
 const hooks = () => {

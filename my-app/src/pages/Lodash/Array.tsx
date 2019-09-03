@@ -239,7 +239,7 @@ export default class Lodash extends React.Component{
     return _.pullAt([1,2,3,4,5],1,3).join(' ')
   }
   renderSplitArray = (num: any, array: any) => {
-    var result = [];
+    var result: any = [];
     for(var i=0; i<array.length;i+=num){
         result.push(array.slice(i,i+num));
     }
