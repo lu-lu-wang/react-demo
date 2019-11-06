@@ -1,5 +1,5 @@
 .container {
-  width: 1190px;
+  // width: 1190px;
   margin: 60px;
   margin-left: 0;
   display: flex;
@@ -54,4 +54,36 @@
 input {
   width: 195px !important;
   outline: none;
+}
+
+// swiper样式
+
+.swiper-box {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-container{
+    overflow: hidden;
+    width: 1400px;
+    height: 800px;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    margin: 0;
+    position: static;
+  }
+  .swiper-button {
+    background-color: rgba(34, 34, 34, .5);
+    transition: background-color .3s ease-in;
+    &:hover {
+      background-color: rgba(34, 34, 34, .7);
+    }
+  }
 }
